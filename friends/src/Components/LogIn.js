@@ -7,7 +7,7 @@ import { useFormInput } from '../Hooks';
 
 const LogIn = props => {
 
-  const [values, changeHandler] = useFormInput({ name: '', password: '' })
+  const [values, changeHandler] = useFormInput({ username: '', password: '' })
   
   const logInHandler = () => {
     axios.post(`http://localhost:5000/api/login`, values)
@@ -16,7 +16,7 @@ const LogIn = props => {
         props.history.push('/friendlist')
 
       })
-      .catch(err => console.log(err, values))
+      .catch(err => console.log('LogIn: POST:', err))
   }
 
   return (
@@ -25,15 +25,17 @@ const LogIn = props => {
         onSubmit={logInHandler}>
         <Form.Input
           fluid
-          label='User Name'
-          name='name'
-          value={values.name}
+          label='Username'
+          name='username'
+          placeholder='Username'
+          value={values.username}
           onChange={changeHandler}
         />
         <Form.Input
           fluid
           label='Password'
           name='password'
+          placeholder='Password'
           type='password'
           value={values.password}
           onChange={changeHandler}

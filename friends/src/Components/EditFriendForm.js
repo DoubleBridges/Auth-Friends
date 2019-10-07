@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import { Form, Segment } from 'semantic-ui-react'
 import { FriendContext } from '../contexts';
 import { useFormInput } from '../Hooks';
