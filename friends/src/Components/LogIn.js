@@ -1,17 +1,13 @@
-import React, { useState} from 'react'
+import React from 'react'
 import axios from 'axios'
 import { Form, Segment } from 'semantic-ui-react'
+import { useFormInput } from '../Hooks';
 
 
 
 const LogIn = props => {
 
-  const [values, setValues] = useState({
-    username: '',
-    password: ''
-  });
-
-  const changeHandler = e => setValues({ ...values, [e.target.name]: e.target.value })
+  const [values, changeHandler] = useFormInput({ name: '', password: '' })
   
   const logInHandler = () => {
     axios.post(`http://localhost:5000/api/login`, values)
@@ -30,7 +26,7 @@ const LogIn = props => {
         <Form.Input
           fluid
           label='User Name'
-          name='username'
+          name='name'
           value={values.name}
           onChange={changeHandler}
         />
@@ -38,6 +34,7 @@ const LogIn = props => {
           fluid
           label='Password'
           name='password'
+          type='password'
           value={values.password}
           onChange={changeHandler}
         />

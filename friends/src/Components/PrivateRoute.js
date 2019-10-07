@@ -19,7 +19,6 @@ const PrivateRoute = ({ component: Component, path, history, ...rest }) => {
     setLoading(false);
   },[path, history, token])
   
-  // we're trying to mimic a Route component here.
   const render = props =>
   token ? <Component {...props} /> : null;
   return <Route path={path} render={render} {...rest} loading={loading}/>;
